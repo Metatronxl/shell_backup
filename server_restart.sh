@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# 服务器自动更新&&启动 脚本
 
 
 PROJECT_NAME="proxy-kidd"
@@ -9,7 +8,7 @@ JAR_NAME="proxy-kidd-1.0-SNAPSHOT.jar"
 function compile()
 {
 	echo "rebuild project"
-	mvn clean package -Pprod
+	mvn clean package -Pprod -Dmaven.test.skip=true
 }
 
 function hasCodeUpdate()
