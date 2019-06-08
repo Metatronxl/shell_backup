@@ -1,59 +1,11 @@
 
 
-Shell Tutorial
+Shell Backup
 ===
 
-最近需要写一个脚本管理服务，花了两天时间学习了一下shell脚本，记录我的学习笔记。
+Shell 记录管理&& 备份
 
-## 目录
-
-- [脚本运行](#脚本运行)
-- [特殊字符](#特殊字符)
-  - [注释](#注释)
-  - [命令分割符](#命令分割符)
-  - [结束符](#结束符)
-  - [句号/圆点](#句号圆点)
-  - [引号](#引号)
-  - [命令替换](#命令替换)
-- [操作符](#操作符)
-  - [赋值](#赋值)
-  - [计算操作符](#计算操作符)
-  - [位操作符](#位操作符)
-  - [逗号操作符](#逗号操作符)
-  - [逻辑操作符](#逻辑操作符)
-- [变量](#变量)
-  - [变量值](#变量值)
-  - [定义变量](#定义变量)
-  - [只读变量](#只读变量)
-  - [使用变量](#使用变量)
-  - [删除变量unset](#删除变量unset)
-  - [变量类型](#变量类型)
-  - [内部变量](#内部变量)
-  - [位置参数](#位置参数)
-  - [参数替换](#参数替换)
-  - [declare/typeset](#declaretypeset)
-  - [变量间接引用](#变量间接引用)
-  - [$RANDOM](#$RANDOM)
-  - [双括号结构](#双括号结构)
-- [转义字符](#转义字符)
-- [测试](#测试)
-  - [测试结构](#测试结构)
-  - [文件测试操作符](#文件测试操作符)
-  - [比较操作符](#比较操作符)
-- [操作字符串](#操作字符串)
-- [for/while](#forwhile)
-  - [for](#for)
-  - [while](#while)
-  - [until](#until)
-  - [嵌套循环](#嵌套循环)
-  - [循环控制](#循环控制)
-- [case/select](#caseselect)
-  - [case](#case)
-  - [select](#select)
-- [函数](#函数)
-  - [局部变量](#局部变量)
-  - [函数参数](#函数参数)
-  - [函数返回值](#函数返回值)
+[TOC]
 
 
 
@@ -157,7 +109,23 @@ fi; echo "File test complete."
 
 ### 结束符
 
-#### 通配符类型
+双分号`;;`，case语句分支的结束符。[demo3](./example/demo3)
+
+```shell
+read Keypress
+case "$Keypress" in
+  [[:lower:]]   ) echo "Lowercase letter";;
+  [[:upper:]]   ) echo "Uppercase letter";;
+  [0-9]         ) echo "Digit";;
+  *             ) echo "Punctuation, whitespace, or other";;
+esac      #  允许字符串的范围出现在[]中,
+          #+ 或者POSIX风格的[[中.
+exit 0*
+
+
+```
+
+### 通配符类型
 
 ```shell
 
@@ -184,21 +152,7 @@ fi; echo "File test complete."
        [:alnum:]：数字和大小写字母
 ```
 
-双分号`;;`，case语句分支的结束符。[demo3](./example/demo3)
 
-```shell
-read Keypress
-case "$Keypress" in
-  [[:lower:]]   ) echo "Lowercase letter";;
-  [[:upper:]]   ) echo "Uppercase letter";;
-  [0-9]         ) echo "Digit";;
-  *             ) echo "Punctuation, whitespace, or other";;
-esac      #  允许字符串的范围出现在[]中,
-          #+ 或者POSIX风格的[[中.
-exit 0*
-
-
-```
 
 
 ### 句号/圆点
